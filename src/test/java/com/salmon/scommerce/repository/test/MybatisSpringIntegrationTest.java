@@ -1,4 +1,4 @@
-package com.salmon.scommerce.respository.test;
+package com.salmon.scommerce.repository.test;
 
 import static org.junit.Assert.assertEquals;
 
