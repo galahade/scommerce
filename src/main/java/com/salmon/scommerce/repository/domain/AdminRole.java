@@ -1,4 +1,4 @@
-package com.salmon.scommerce.respository.domain;
+package com.salmon.scommerce.repository.domain;
 
 
 public class AdminRole {

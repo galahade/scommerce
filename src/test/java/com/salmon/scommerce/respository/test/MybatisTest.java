@@ -12,8 +12,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.salmon.scommerce.respository.domain.AdminRole;
-import com.salmon.scommerce.respository.mybatis.config.AdminRoleMapper;
+import com.salmon.scommerce.repository.domain.AdminRole;
+import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
 
 public class MybatisTest {
 

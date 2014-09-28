@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.salmon.scommerce.respository.mybatis.config.AdminRoleMapper;
+import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
 
 @Configuration
 @Import(DataSourceConfig.class)
