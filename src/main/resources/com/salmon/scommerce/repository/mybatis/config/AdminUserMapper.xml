@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper  namespace="com.salmon.scommerce.repository.mybatis.config.AdminUserMapper">
+
+   <resultMap type="com.salmon.scommerce.repository.domain.AdminUser" id="AdminUserResult">
+    
+     <id  column="user_id" property="userId" />
+   	 <result  column="firstname" property="firstname" />
+     <result  column="lastname" property="lastname" />
+     <result  column="email" property="email" />
+     <result  column="username" property="username" /> 
+     <result  column="password" property="password" /> 
+     <result  column="created" property="created" /> 
+     
+     <result  column="modified" property="modified" /> 
+     <result  column="logdate" property="logdate" /> 
+     <result  column="lognum" property="lognum" /> 
+     <result  column="reload_acl_flag" property="reloadAclFlag" /> 
+     <result  column="is_active" property="isActive" /> 
+      
+     <result  column="extra" property="extra" /> 
+     <result  column="rp_token" property="rpToken" /> 
+     
+     
+     
+     <result  column="failures_num" property="failuresNum" /> 
+     
+     
+     <result  column="first_failure" property="firstFailure" /> 
+     <result  column="lock_expires" property="lockExpires" />
+     
+      
+     <result  column="rp_token_created_at" property="rpTokenCreatedAt" /> 
+    
+
+</mapper>
