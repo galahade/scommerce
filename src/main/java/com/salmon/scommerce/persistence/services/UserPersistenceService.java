@@ -1,4 +1,4 @@
-package com.salmon.scommerce.services;
+package com.salmon.scommerce.persistence.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.salmon.scommerce.repository.domain.AdminRole;
-import com.salmon.scommerce.repository.domain.AdminUser;
-import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
-import com.salmon.scommerce.repository.mybatis.config.AdminUserMapper;
+import com.salmon.scommerce.persistence.domain.AdminRole;
+import com.salmon.scommerce.persistence.domain.AdminUser;
+import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
+import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 
 @Component
-public class UserService {
+public class UserPersistenceService {
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	

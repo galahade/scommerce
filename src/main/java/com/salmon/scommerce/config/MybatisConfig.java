@@ -11,8 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
-import com.salmon.scommerce.repository.mybatis.config.AdminUserMapper;
+import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
+import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 
 @Configuration
 @ComponentScan(basePackages = { "com.salmon.scommerce.services"})

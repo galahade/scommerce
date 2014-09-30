@@ -1,7 +1,5 @@
 package com.salmon.scommerce.repository.test;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,11 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import com.salmon.scommerce.config.MybatisConfig;
-import com.salmon.scommerce.repository.domain.AdminRole;
-import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
-import com.salmon.scommerce.repository.mybatis.config.AdminUserMapper;
-import com.salmon.scommerce.services.UserService;
+import com.salmon.scommerce.persistence.services.UserPersistenceService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -51,7 +47,7 @@ public class MybatisSpringIntegrationTest {
 	*/
 	
 	@Autowired
-	private UserService userservice; 
+	private UserPersistenceService userservice; 
 	
 	@Test
 	public void testUpdateUserAndRoleWithId(){

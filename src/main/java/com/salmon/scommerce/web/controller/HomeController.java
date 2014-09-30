@@ -26,6 +26,6 @@ private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 		LOG.debug("Login page will be display.");
 		ModelAndView view = new ModelAndView();
 		view.setViewName("login");
-		return "home";
+		return "login";
 	}
 }

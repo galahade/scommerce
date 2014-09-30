@@ -1,9 +1,9 @@
 package com.salmon.scommerce.repository.test;
 
-import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
-import java.io.InputStream;
+import static org.junit.Assert.fail;
 
+import java.io.InputStream;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,8 +12,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.salmon.scommerce.repository.domain.AdminRole;
-import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
+import com.salmon.scommerce.persistence.domain.AdminRole;
+import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 
 public class MybatisTest {
 

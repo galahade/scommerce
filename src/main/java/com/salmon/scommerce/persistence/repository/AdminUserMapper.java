@@ -1,12 +1,12 @@
-package com.salmon.scommerce.repository.mybatis.config;
+package com.salmon.scommerce.persistence.repository;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.salmon.scommerce.repository.domain.AdminRole;
-import com.salmon.scommerce.repository.domain.AdminUser;
+import com.salmon.scommerce.persistence.domain.AdminRole;
+import com.salmon.scommerce.persistence.domain.AdminUser;
 
 public interface AdminUserMapper {
 	

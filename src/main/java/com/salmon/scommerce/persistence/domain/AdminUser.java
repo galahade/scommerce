@@ -1,4 +1,4 @@
-package com.salmon.scommerce.repository.domain;
+package com.salmon.scommerce.persistence.domain;
 
 import java.util.Date;
 
