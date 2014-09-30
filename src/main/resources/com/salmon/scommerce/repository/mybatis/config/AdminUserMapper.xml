@@ -31,6 +31,6 @@
      
       
      <result  column="rp_token_created_at" property="rpTokenCreatedAt" /> 
-    
+    </resultMap>
 
 </mapper>
