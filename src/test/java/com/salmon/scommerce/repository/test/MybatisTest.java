@@ -43,6 +43,8 @@ public class MybatisTest {
 			fail(AdminRoleMapper.class.getName() + " has config error");
 		}
 		
+		/**********************************/
+		
 		
 	}
 
