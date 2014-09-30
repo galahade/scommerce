@@ -9,10 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.salmon.scommerce.config.MybatisConfig;
 import com.salmon.scommerce.repository.domain.AdminRole;
 import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
+import com.salmon.scommerce.repository.mybatis.config.AdminUserMapper;
+import com.salmon.scommerce.services.UserService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,6 +22,8 @@ public class MybatisSpringIntegrationTest {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	/*
+	 
 	@Autowired
 	private AdminRoleMapper mapper;
 	
@@ -31,4 +34,34 @@ public class MybatisSpringIntegrationTest {
 		assertEquals(adminRole.getRoleName(), "Administrators");
 		logger.debug("end");
 	}
+	
+	
+	@Autowired
+	private AdminUserMapper userMapper;
+	
+	@Test
+	public void testUpdateUserId(){
+		
+		logger.debug("testUpdateUserId starts");
+		userMapper.updateUserId(10, 4);
+		userMapper.updateRoleWithUserId(10, 4);
+		
+	}
+	
+	*/
+	
+	@Autowired
+	private UserService userservice; 
+	
+	@Test
+	public void testUpdateUserAndRoleWithId(){
+		
+		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");		
+		//userservice.updateUserAndRoleWithUserId(7, 10);
+		userservice.getUserAndRoleWithUserId(7);
+		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId ended!");
+		
+	}
+	
+	
 }

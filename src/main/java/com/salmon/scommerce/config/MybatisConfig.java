@@ -7,12 +7,15 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import com.salmon.scommerce.repository.mybatis.config.AdminRoleMapper;
+import com.salmon.scommerce.repository.mybatis.config.AdminUserMapper;
 
 @Configuration
+@ComponentScan(basePackages = { "com.salmon.scommerce.services"})
 @Import(DataSourceConfig.class)
 public class MybatisConfig {
 
@@ -45,4 +48,14 @@ public class MybatisConfig {
 		bean.setSqlSessionFactory(getSqlSessionFactory());
 		return bean;
 	}
+	
+	@Bean 
+	public MapperFactoryBean<AdminUserMapper> adminUserMapper() throws Exception{
+		MapperFactoryBean<AdminUserMapper> bean = new MapperFactoryBean<AdminUserMapper>();
+		bean.setMapperInterface(AdminUserMapper.class);
+		bean.setSqlSessionFactory(getSqlSessionFactory());
+		return bean;
+	}
+	
+	
 }
