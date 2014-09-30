@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.salmon.scommerce.persistence.domain.AdminRole;
 import com.salmon.scommerce.persistence.domain.AdminUser;
 
 public interface AdminUserMapper {
@@ -18,10 +17,6 @@ public interface AdminUserMapper {
 	
 	@Select("SELECT * FROM admin_user WHERE user_id = #{Id}")
 	@ResultMap(value = {"AdminUserResult"})
-	public AdminUser getUserById(int Id); 
-	
-	@Select("SELECT * FROM admin_role where user_id = #{id}")
-	@ResultMap(value="AdminRoleResult")
-	public AdminRole selectAdminRole(int id);
-	
+	public AdminUser getUserById(@Param("Id") int Id); 
+		
 }

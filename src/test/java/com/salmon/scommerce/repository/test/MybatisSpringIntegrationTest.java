@@ -1,5 +1,7 @@
 package com.salmon.scommerce.repository.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.salmon.scommerce.config.MybatisConfig;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
+import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,17 +47,22 @@ public class MybatisSpringIntegrationTest {
 		
 	}
 	
+	
 	*/
 	
 	@Autowired
-	private UserPersistenceService userservice; 
+	private UserPersistenceService userservice;
 	
+		
 	@Test
 	public void testUpdateUserAndRoleWithId(){
 		
-		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");		
-		//userservice.updateUserAndRoleWithUserId(7, 10);
+		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");
+				
+		userservice.updateUserAndRoleWithUserId(7, 10);
+		
 		userservice.getUserAndRoleWithUserId(7);
+		
 		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId ended!");
 		
 	}

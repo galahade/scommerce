@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Import;
 
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
+import com.salmon.scommerce.persistence.services.*;
+import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
 @Configuration
 @ComponentScan(basePackages = { "com.salmon.scommerce.services"})
@@ -57,5 +59,5 @@ public class MybatisConfig {
 		return bean;
 	}
 	
-	
+
 }
