@@ -1,7 +1,14 @@
 package com.salmon.scommerce.config;
 
+import javax.inject.Inject;
+
+import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
+import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
+import org.apache.shiro.authz.ModularRealmAuthorizer;
+import org.apache.shiro.authz.permission.WildcardPermissionResolver;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -9,13 +16,20 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
+
+import com.salmon.scommerce.core.services.UserService;
+import com.salmon.scommerce.security.shiro.UserRealm;
+
 @Configuration
+@Import(CoreConfig.class)
 public class ShiroConfig {
 	
+	@Inject UserService userService;
 	@Bean
-	public ShiroFilterFactoryBean shiroFilter() {
+	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
 		ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-		bean.setSecurityManager(securityManager());
+		bean.setSecurityManager(securityManager);
 		bean.setLoginUrl("/login");
 		bean.setSuccessUrl("/home");
 		bean.setUnauthorizedUrl("/unauthorized");
@@ -24,10 +38,21 @@ public class ShiroConfig {
 	}
 	
 	@Bean
-	public SecurityManager securityManager() {
-		DefaultSecurityManager manager = new DefaultSecurityManager();
-		manager.setRealm(null);
-		return manager;
+	public SecurityManager securityManager(Realm userRealm) {
+		DefaultSecurityManager securityManager = new DefaultSecurityManager();
+		
+		//…Ë÷√authenticator  
+		ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();  
+		authenticator.setAuthenticationStrategy(new AtLeastOneSuccessfulStrategy()); 
+		securityManager.setAuthenticator(authenticator);
+		
+		//…Ë÷√authorizer  
+		ModularRealmAuthorizer authorizer = new ModularRealmAuthorizer();  
+		authorizer.setPermissionResolver(new WildcardPermissionResolver());  
+		securityManager.setAuthorizer(authorizer); 
+		
+		securityManager.setRealm(userRealm);
+		return securityManager;
 	}
 	
 	@Bean
@@ -44,10 +69,17 @@ public class ShiroConfig {
 	}
 	
 	@Bean
-	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
+	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
 		AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
-		advisor.setSecurityManager(securityManager());
-		return null;
+		advisor.setSecurityManager(securityManager);
+		return advisor;
+	}
+	
+	@Bean
+	public Realm userRealm() {
+		UserRealm userRealm = new UserRealm(userService);
+		
+		return userRealm;
 	}
 
 }

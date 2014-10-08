@@ -1,6 +1,6 @@
 package com.salmon.scommerce.repository.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.salmon.scommerce.config.MybatisConfig;
-import com.salmon.scommerce.persistence.domain.AdminRole;
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
