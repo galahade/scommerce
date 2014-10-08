@@ -34,10 +34,17 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 		
 		logger.debug("UserServiceTest.updateUserAndRoleWithUserId starting");
 		
-		usermapper.updateUserId(newId, oldId);
-		usermapper.updateRoleWithUserId(newId, oldId-1);
+		int updatedNum = usermapper.updateAdminUserWithUserId(newId, oldId);
 		
-		logger.debug("UserServiceTest.updateUserAndRoleWithUserId ended!");
+
+		if(updatedNum < 0){
+
+		}
+		
+	
+		//usermapper.updateRoleWithUserId(newId, oldId-1);
+		
+		//logger.debug("UserServiceTest.updateUserAndRoleWithUserId ended!");
 				
 	}
 	
@@ -46,12 +53,12 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId starting");
 		
-		AdminUser user = usermapper.getUserById(userId);
-		AdminRole role = roleMapper.selectAdminRoleByUserId(userId);
+		//AdminUser user = usermapper.getUserById(userId);
+		//AdminRole role = roleMapper.selectAdminRoleByUserId(userId);
 		
-		logger.debug("user id : " + user.getUserId());
-		logger.debug("role id : " + role.getRoleId());
-		logger.debug("role.user id : " + role.getUserId());
+		//logger.debug("user id : " + user.getUserId());
+		//logger.debug("role id : " + role.getRoleId());
+		//logger.debug("role.user id : " + role.getUserId());
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId ended!");
 				

@@ -10,13 +10,10 @@ import com.salmon.scommerce.persistence.domain.AdminUser;
 public interface AdminUserMapper {
 	
 	@Update("UPDATE admin_user SET user_id = #{newId} WHERE user_id = #{oldId}")
-	public void updateUserId(@Param("newId") int newId, @Param("oldId") int oldId);
-	
-	@Update("UPDATE admin_role SET user_id = #{newId} WHERE user_id = #{oldId}")
-	public void updateRoleWithUserId(@Param("newId") int newId, @Param("oldId") int oldId);
+	public int updateAdminUserWithUserId(@Param("oldId") int oldId, @Param("newId") int newId);
 	
 	@Select("SELECT * FROM admin_user WHERE user_id = #{Id}")
 	@ResultMap(value = {"AdminUserResult"})
-	public AdminUser getUserById(@Param("Id") int Id); 
+	public AdminUser getAdminUserByUserId(@Param("Id") int Id); 
 		
 }

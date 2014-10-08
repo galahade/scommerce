@@ -26,39 +26,20 @@ public class MybatisSpringIntegrationTest {
 	@Autowired
 	private AdminRoleMapper roleMapper;
 	
-	@Test
-	public void testSelectAdminRoleById() {
-		logger.debug("begin");
-		AdminRole adminRole = roleMapper.selectAdminRole(1);
-		assertEquals(adminRole.getRoleName(), "Administrators");
-		logger.debug("end");
-	}
-	
-	
 	@Autowired
 	private AdminUserMapper userMapper;
 	
-	@Test
-	public void testUpdateUserId(){
-		
-		logger.debug("testUpdateUserId starts");
-		userMapper.updateUserId(10, 4);
-		userMapper.updateRoleWithUserId(10, 4);
-		
-	}
-	
-	
 	@Autowired
-	UserPersistenceService  userservice;
+	UserPersistenceService userservice;
 		
 	@Test
 	public void testUpdateUserAndRoleWithId(){
 		
 		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");
 				
-		//userservice.updateUserAndRoleWithUserId(7, 10);
+		userservice.updateUserAndRoleWithUserId(7, 12);
 		
-		userservice.getUserAndRoleWithUserId(7);
+		//userservice.getUserAndRoleWithUserId(12);
 		
 		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId ended!");
 		

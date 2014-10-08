@@ -36,7 +36,7 @@ public class MybatisTest {
 		SqlSession session = factory.openSession();
 		try {
 			AdminRoleMapper mapper = session.getMapper(AdminRoleMapper.class);
-			AdminRole adminRole = mapper.selectAdminRole(1);
+			AdminRole adminRole = mapper.getAdminRoleByRoleId(1);
 			assertEquals(adminRole.getRoleName(), "Administrators");
 		} catch (Exception e) {
 			e.printStackTrace();
