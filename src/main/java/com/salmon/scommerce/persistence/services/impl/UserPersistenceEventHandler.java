@@ -30,23 +30,51 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 	
 	
 	@Transactional
-	public void updateUserAndRoleWithUserId(int newId, int oldId){
+	public void updateAdminUserAndAdminRoleWithUserId(int oldId, int newId) throws RuntimeException{
 		
 		logger.debug("UserServiceTest.updateUserAndRoleWithUserId starting");
 		
-		int updatedNum = usermapper.updateAdminUserWithUserId(newId, oldId);
-		
+		int updatedNum = usermapper.updateAdminUserWithUserId(oldId, newId);
 
-		if(updatedNum < 0){
-
+		if(updatedNum < 0){	
+			logger.debug("no AdminUser records updated!");
+			throw new RuntimeException("no AdminUser records updated!");
 		}
 		
-	
-		//usermapper.updateRoleWithUserId(newId, oldId-1);
+		updatedNum = roleMapper.updateAdminRoleWithUserId(oldId, newId);
 		
-		//logger.debug("UserServiceTest.updateUserAndRoleWithUserId ended!");
+		if(updatedNum < 0){	
+			logger.debug("no AdminRole records updated!");
+			throw new RuntimeException("no AdminRole records updated!");
+		}
+		
+		logger.debug("UserServiceTest.updateUserAndRoleWithUserId ended!");
 				
 	}
+	
+	@Transactional
+	public void failToUpdateAdminUserAndAdminRoleWithUserId(int oldId, int newId) throws RuntimeException{
+		
+		logger.debug("UserServiceTest.updateUserAndRoleWithUserId starting");
+		
+		int updatedNum = usermapper.updateAdminUserWithUserId(oldId, newId);
+
+		if(updatedNum < 1){	
+			logger.debug("no AdminUser records updated!");
+			throw new RuntimeException("no AdminUser records updated!");
+		}
+		
+		updatedNum = roleMapper.updateAdminRoleWithUserId(oldId - 1, newId);
+		
+		if(updatedNum < 1){	
+			logger.debug("no AdminRole records updated!");
+			throw new RuntimeException("no AdminRole records updated!");
+		}
+		
+		logger.debug("UserServiceTest.updateUserAndRoleWithUserId ended!");
+				
+	}
+	
 	
 	@Transactional
 	public void getUserAndRoleWithUserId(int userId){

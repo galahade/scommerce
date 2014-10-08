@@ -1,6 +1,6 @@
 package com.salmon.scommerce.repository.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import com.salmon.scommerce.persistence.services.UserPersistenceService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={MybatisConfig.class})
-public class MybatisSpringIntegrationTest {
+public class UserPersistenceServiceTest {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -37,9 +37,33 @@ public class MybatisSpringIntegrationTest {
 		
 		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");
 				
-		userservice.updateUserAndRoleWithUserId(7, 12);
+		try {
+			
+			userservice.updateAdminUserAndAdminRoleWithUserId(7, 12);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
 		
-		//userservice.getUserAndRoleWithUserId(12);
+		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId ended!");
+		
+	}
+	
+	@Test
+	public void testFailToUpdateAdminUserAndAdminRoleWithUserId(){
+		
+		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");
+				
+		try {
+			
+			userservice.failToUpdateAdminUserAndAdminRoleWithUserId(12, 7);
+			
+			fail();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId ended!");
 		
