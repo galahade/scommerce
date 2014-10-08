@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper  namespace="com.salmon.scommerce.persistence.repository.Api2AclRuleMapper">
+
+   <resultMap type="com.salmon.scommerce.persistence.domain.Api2AclRule" id="Api2AclRuleResult">
+    
+     <id  property="entityId" column="entity_id" />
+   	 <result  property="roleId" column="role_id" />
+     <result  property="resourceId" column="resource_id" />
+     <result  property="privilege" column="privilege" />
+    
+    </resultMap>
+
+
+
+	<select id="getAclRules" parameterType="com.salmon.scommerce.persistence.domain.Api2AclRule"
+		resultMap="Api2AclRuleResult">
+		SELECT entity_id, role_id, resource_id, privilege FROM api2_acl_rule
+		WHERE 1=1
+		<if test="entityId != 0"> AND entity_id = #{entityId}	</if>
+		<if test="roleId != 0"> AND role_id = #{roleId}	</if>
+		<if test="resourceId != null and resourceId != ''"> AND resource_id = #{resourceId}	</if>
+		<if test="privilege != null and privilege != ''"> AND privilege = #{privilege}	</if>
+	</select>
+	
+</mapper>

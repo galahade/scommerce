@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Import;
 
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
+import com.salmon.scommerce.persistence.repository.Api2AclRoleMapper;
+import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 import com.salmon.scommerce.persistence.services.*;
 import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
@@ -74,6 +76,40 @@ public class MybatisConfig {
 	public AdminUserMapper getAdminUserMapper() throws Exception{
 		try {
 			return adminUserMapper().getObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	@Bean 
+	public MapperFactoryBean<Api2AclRuleMapper> api2AclRuleMapper() throws Exception{
+		MapperFactoryBean<Api2AclRuleMapper> bean = new MapperFactoryBean<Api2AclRuleMapper>();
+		bean.setMapperInterface(Api2AclRuleMapper.class);
+		bean.setSqlSessionFactory(getSqlSessionFactory());
+		return bean;
+	}
+	
+	public Api2AclRuleMapper getApi2AclRuleMapper() throws Exception{
+		try {
+			return api2AclRuleMapper().getObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	@Bean 
+	public MapperFactoryBean<Api2AclRoleMapper> api2AclRoleMapper() throws Exception{
+		MapperFactoryBean<Api2AclRoleMapper> bean = new MapperFactoryBean<Api2AclRoleMapper>();
+		bean.setMapperInterface(Api2AclRoleMapper.class);
+		bean.setSqlSessionFactory(getSqlSessionFactory());
+		return bean;
+	}
+	
+	public Api2AclRoleMapper getApi2AclRoleMapper() throws Exception{
+		try {
+			return api2AclRoleMapper().getObject();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
