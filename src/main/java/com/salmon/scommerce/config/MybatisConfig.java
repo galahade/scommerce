@@ -42,13 +42,25 @@ public class MybatisConfig {
 			throw e;
 		}
 	}
+		
 	
 	@Bean 
 	public MapperFactoryBean<AdminRoleMapper> adminRoleMapper() throws Exception{
+		
 		MapperFactoryBean<AdminRoleMapper> bean = new MapperFactoryBean<AdminRoleMapper>();
 		bean.setMapperInterface(AdminRoleMapper.class);
 		bean.setSqlSessionFactory(getSqlSessionFactory());
 		return bean;
+				
+	}
+	
+	public AdminRoleMapper getAdminRoleMapper() throws Exception{
+		try {
+			return adminRoleMapper().getObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 	
 	@Bean 
@@ -59,5 +71,21 @@ public class MybatisConfig {
 		return bean;
 	}
 	
+	public AdminUserMapper getAdminUserMapper() throws Exception{
+		try {
+			return adminUserMapper().getObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	@Bean 
+	public UserPersistenceService userPersistenceService() throws Exception{
+		
+		UserPersistenceService userservice = new UserPersistenceEventHandler(getAdminUserMapper(), getAdminRoleMapper());
+		
+		return userservice;
+	}
 
 }

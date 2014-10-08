@@ -58,13 +58,13 @@ public class AdminRole {
 		this.roleType = roleType;
 	}
 
+
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
 	public String getRoleName() {
 		return roleName;
 	}

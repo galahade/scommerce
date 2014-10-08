@@ -2,7 +2,6 @@ package com.salmon.scommerce.persistence.services.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,11 +16,18 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Autowired
 	private AdminUserMapper usermapper;
 	
-	@Autowired
 	private AdminRoleMapper roleMapper;
+	
+	
+	public UserPersistenceEventHandler(AdminUserMapper usermapper, AdminRoleMapper roleMapper){
+		
+		this.usermapper = usermapper;
+		this.roleMapper = roleMapper;
+		
+	}
+	
 	
 	@Transactional
 	public void updateUserAndRoleWithUserId(int newId, int oldId){
@@ -36,12 +42,12 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 	}
 	
 	@Transactional
-	public void getUserAndRoleWithUserId(int Id){
+	public void getUserAndRoleWithUserId(int userId){
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId starting");
 		
-		AdminUser user = usermapper.getUserById(Id);
-		AdminRole role = roleMapper.selectAdminRoleByUserId(Id);
+		AdminUser user = usermapper.getUserById(userId);
+		AdminRole role = roleMapper.selectAdminRoleByUserId(userId);
 		
 		logger.debug("user id : " + user.getUserId());
 		logger.debug("role id : " + role.getRoleId());

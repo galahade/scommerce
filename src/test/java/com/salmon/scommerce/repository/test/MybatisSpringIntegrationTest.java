@@ -11,6 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.salmon.scommerce.config.MybatisConfig;
+import com.salmon.scommerce.persistence.domain.AdminRole;
+import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
+import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
 import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
@@ -21,15 +24,15 @@ public class MybatisSpringIntegrationTest {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	/*
+	
 	 
 	@Autowired
-	private AdminRoleMapper mapper;
+	private AdminRoleMapper roleMapper;
 	
 	@Test
 	public void test() {
 		logger.debug("begin");
-		AdminRole adminRole = mapper.selectAdminRole(1);
+		AdminRole adminRole = roleMapper.selectAdminRole(1);
 		assertEquals(adminRole.getRoleName(), "Administrators");
 		logger.debug("end");
 	}
@@ -47,19 +50,18 @@ public class MybatisSpringIntegrationTest {
 		
 	}
 	
-	
+	/*
 	*/
 	
 	@Autowired
-	private UserPersistenceService userservice;
-	
+	UserPersistenceService  userservice;
 		
 	@Test
 	public void testUpdateUserAndRoleWithId(){
 		
 		logger.debug("MybatisSpringIntegrationTest.testUpdateUserAndRoleWithId starting");
 				
-		userservice.updateUserAndRoleWithUserId(7, 10);
+		//userservice.updateUserAndRoleWithUserId(7, 10);
 		
 		userservice.getUserAndRoleWithUserId(7);
 		
