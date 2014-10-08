@@ -11,18 +11,15 @@ import org.apache.shiro.realm.Realm;
 
 public class MyRealm1 implements Realm {
 
-	@Override
 	public String getName() {
 		return "myrealm1";
 	}
 
-	@Override
 	public boolean supports(AuthenticationToken token) {
 		//仅支持UsernamePasswordToken类型的Token  
         return token instanceof UsernamePasswordToken;   
 	}
 
-	@Override
 	public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token)
 			throws AuthenticationException {
 		 String username = (String)token.getPrincipal();  //得到用户名  

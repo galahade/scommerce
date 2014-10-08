@@ -9,7 +9,6 @@ import org.apache.shiro.authz.permission.WildcardPermission;
 
 public class MyRolePermissionResolver implements RolePermissionResolver {
 
-	 @Override  
 	    public Collection<Permission> resolvePermissionsInRole(String roleString) {  
 	        if("role1".equals(roleString)) {  
 	            return Arrays.asList((Permission)new WildcardPermission("menu:*"));  

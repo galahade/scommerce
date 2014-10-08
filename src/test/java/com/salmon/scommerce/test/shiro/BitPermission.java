@@ -46,7 +46,6 @@ public class BitPermission implements Permission {
 
 	}
 
-	@Override
 	public boolean implies(Permission p) {
 		if (!(p instanceof BitPermission)) {
 			return false;

@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.salmon.scommerce.persistence.domain.AdminRole;
-import com.salmon.scommerce.persistence.domain.AdminUser;
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
