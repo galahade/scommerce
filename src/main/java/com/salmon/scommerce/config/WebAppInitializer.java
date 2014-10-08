@@ -11,7 +11,7 @@ public class WebAppInitializer extends
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		
-		return new Class<?>[]{MybatisConfig.class};
+		return new Class<?>[]{MybatisConfig.class,ShiroConfig.class,CoreConfig.class};
 	}
 
 	@Override
