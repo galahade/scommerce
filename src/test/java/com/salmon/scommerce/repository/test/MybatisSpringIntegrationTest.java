@@ -15,7 +15,6 @@ import com.salmon.scommerce.persistence.domain.AdminRole;
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
-import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,13 +23,11 @@ public class MybatisSpringIntegrationTest {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	
-	 
 	@Autowired
 	private AdminRoleMapper roleMapper;
 	
 	@Test
-	public void test() {
+	public void testSelectAdminRoleById() {
 		logger.debug("begin");
 		AdminRole adminRole = roleMapper.selectAdminRole(1);
 		assertEquals(adminRole.getRoleName(), "Administrators");
@@ -50,8 +47,6 @@ public class MybatisSpringIntegrationTest {
 		
 	}
 	
-	/*
-	*/
 	
 	@Autowired
 	UserPersistenceService  userservice;
