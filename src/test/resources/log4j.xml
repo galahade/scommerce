@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.salmon.scommerce">
-		<level value="debug" />
+		<level value="TRACE" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -33,10 +33,6 @@
 	</logger>
 	
 	<logger name="org.apache.ibatis">
-		<level value="debug" />
-	</logger>
-	
-	<logger name="org.mybatis.example">
 		<level value="debug" />
 	</logger>
 	
