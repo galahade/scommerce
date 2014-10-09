@@ -21,6 +21,7 @@ private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 		view.setViewName("home");
 		return "home";
 	}
+	
 	@RequestMapping(method=RequestMethod.GET,value="login")
 	public String getLoginPage() {
 		LOG.debug("Login page will be display.");
@@ -28,4 +29,11 @@ private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 		view.setViewName("login");
 		return "login";
 	}
+	
+	@RequestMapping(method=RequestMethod.POST,value="login")
+	public String processLogin() {
+		LOG.debug("start to login.");
+		return "home";
+	}
+	
 }
