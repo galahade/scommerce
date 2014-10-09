@@ -23,6 +23,7 @@ import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 @ContextConfiguration(classes={MybatisConfig.class})
 public class ApiAclRuleDaoTest extends TestCase {
 	private static Api2AclRule api2AclRule;
+	private int insertId;
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
@@ -32,15 +33,16 @@ public class ApiAclRuleDaoTest extends TestCase {
 	public static void setUpBeforeClass(){
 		api2AclRule = new Api2AclRule();
 		api2AclRule.setRoleId(1);
-		api2AclRule.setResourceId("2");
+		api2AclRule.setResourceId("4");
 		api2AclRule.setPrivilege("R,W");
 	}
 	
 	@Test
 	public void testAddAclRule() {
 		logger.debug("begin");
-		int aclRuleId= api2AclRuleMapper.addAclRule(api2AclRule);
-		assertNotSame(aclRuleId, 0);
+		insertId= api2AclRuleMapper.addAclRule(api2AclRule);
+		System.out.println("-------------" + insertId);
+		assertNotSame(insertId, 0);
 		logger.debug("end");
 	}
 	
@@ -49,6 +51,26 @@ public class ApiAclRuleDaoTest extends TestCase {
 		logger.debug("begin-testSelectAclRule");
 		List<Api2AclRule> aclRules= api2AclRuleMapper.getAclRules(api2AclRule);
 		assertNotNull(aclRules);
+		logger.debug("end-testSelectAclRule");
+	}
+	
+	@Test
+	public void testUpdateRuleByEntityId(){
+		logger.debug("begin-testUpdateRuleByEntityId");
+		int selectId = 7;
+		Api2AclRule aclRule = api2AclRuleMapper.getAclRuleByEntityId(selectId);
+		System.out.println(aclRule.getEntityId()+"---------"+aclRule.getPrivilege());
+		aclRule.setPrivilege("R+X");
+		api2AclRuleMapper.updateRuleByEntityId(aclRule);
+		logger.debug("end-testUpdateRuleByEntityId");
+	}
+	
+	@Test
+	public void testDeleteByEntityId(){
+		logger.debug("begin-testSelectAclRule");
+		int selectId = 7;
+		Api2AclRule aclRule = api2AclRuleMapper.getAclRuleByEntityId(selectId);
+		api2AclRuleMapper.deleteByEntityId(aclRule.getEntityId());
 		logger.debug("end-testSelectAclRule");
 	}
 }

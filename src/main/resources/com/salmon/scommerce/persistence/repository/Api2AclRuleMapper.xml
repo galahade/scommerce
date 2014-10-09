@@ -10,17 +10,15 @@
      <result  property="privilege" column="privilege" />
     
     </resultMap>
-
-
-
-	<select id="getAclRules" parameterType="com.salmon.scommerce.persistence.domain.Api2AclRule"
-		resultMap="Api2AclRuleResult">
-		SELECT entity_id, role_id, resource_id, privilege FROM api2_acl_rule
-		WHERE 1=1
-		<if test="entityId != 0"> AND entity_id = #{entityId}	</if>
-		<if test="roleId != 0"> AND role_id = #{roleId}	</if>
-		<if test="resourceId != null and resourceId != ''"> AND resource_id = #{resourceId}	</if>
-		<if test="privilege != null and privilege != ''"> AND privilege = #{privilege}	</if>
-	</select>
+    
+    
+    <select id="getAclRules" parameterType="com.salmon.scommerce.persistence.domain.Api2AclRule" 
+    	resultMap="Api2AclRuleResult">
+    SELECT entity_id, role_id, resource_id, privilege FROM api2_acl_rule WHERE 1=1
+	    <if test="entityId != 0">	AND entity_id = #{entityId}	</if> 
+	    <if test="roleId != 0">	AND role_id = #{roleId}	</if> 
+	    <if test="resourceId != null and resourceId != ''">	AND resource_id = #{resourceId}	</if> 
+	    <if test="privilege != null and privilege != ''">	AND privilege = #{privilege}	</if>
+    </select>
 	
 </mapper>
