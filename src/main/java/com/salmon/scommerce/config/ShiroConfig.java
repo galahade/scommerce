@@ -6,6 +6,8 @@ import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.authz.ModularRealmAuthorizer;
 import org.apache.shiro.authz.permission.WildcardPermissionResolver;
+import org.apache.shiro.crypto.RandomNumberGenerator;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
@@ -19,6 +21,7 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
 
 import com.salmon.scommerce.core.services.UserService;
+import com.salmon.scommerce.security.shiro.PasswordHelper;
 import com.salmon.scommerce.security.shiro.UserRealm;
 
 @Configuration
@@ -80,6 +83,17 @@ public class ShiroConfig {
 		UserRealm userRealm = new UserRealm(userService);
 		
 		return userRealm;
+	}
+	
+	@Bean
+	public RandomNumberGenerator randomNumberGenerator() {
+		return new SecureRandomNumberGenerator();
+	}
+	
+	@Bean
+	public PasswordHelper passwordHelper(RandomNumberGenerator randomNumberGenerator) {
+		PasswordHelper passwordHelper = new PasswordHelper("md5", 2, randomNumberGenerator);
+		return passwordHelper;
 	}
 
 }
