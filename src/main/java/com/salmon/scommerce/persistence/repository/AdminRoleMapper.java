@@ -20,7 +20,7 @@ public interface AdminRoleMapper {
 	AdminRole getAdminRoleByUserId(int userId);
 	
 	@Update("UPDATE admin_role SET user_id = #{newId} WHERE user_id = #{oldId}")
-	public int updateAdminRoleWithUserId(@Param("oldId") int oldId, @Param("newId") int newId);
+	int updateAdminRoleWithUserId(@Param("oldId") int oldId, @Param("newId") int newId);
 	
 	@Insert("INSERT INTO admin_role " +
 			"(role_id,parent_id,tree_level,sort_order,role_type,user_id,role_name,gws_is_all) " +
