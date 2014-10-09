@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper  namespace="com.salmon.scommerce.persistence.repository.AdminUserMapper">
 
-   <resultMap type="com.salmon.scommerce.persistence.domain.AdminUser" id="AdminUserResult">
-    
+   <resultMap type="com.salmon.scommerce.persistence.domain.AdminUser" id="AdminUserResult">    
      <id  column="user_id" property="userId" />
    	 <result  column="firstname" property="firstname" />
      <result  column="lastname" property="lastname" />
@@ -18,10 +17,55 @@
      <result  column="is_active" property="isActive" />       
      <result  column="extra" property="extra" /> 
      <result  column="rp_token" property="rpToken" /> 
+     <result  column="rp_token_created_at" property="rpTokenCreatedAt" /> 
      <result  column="failures_num" property="failuresNum" /> 
      <result  column="first_failure" property="firstFailure" /> 
      <result  column="lock_expires" property="lockExpires" /> 
-     <result  column="rp_token_created_at" property="rpTokenCreatedAt" /> 
-    </resultMap>
+   </resultMap>
+   
+   <insert id="addAdminUser" >
+     INSERT INTO admin_user (<include refid="AdminUserColumns"/>) VALUES (<include refid="AdminUserProperties"/>)
+   </insert>
+   
+   <insert id="addAdminUserInc" useGeneratedKeys="true" keyProperty="userId">
+     INSERT INTO admin_user (<include refid="AdminUserColumns"/>) VALUES (<include refid="AdminUserProperties"/>)
+   </insert>
+   
+   <update id="updateAdminUser">
+     UPDATE admin_user
+     <set>
+       <if test="firstname != null">firstname=#{firstname}, </if>
+       <if test="lastname != null">lastname=#{lastname}, </if>
+       <if test="email != null">email=#{email}, </if>
+       <if test="username != null">username=#{username}, </if>
+       <if test="password != null">password=#{password}, </if>
+       <if test="created != null">created=#{created}, </if>
+       <if test="modified != null">modified=#{modified}, </if>
+       <if test="logdate != null">logdate=#{created}, </if>
+       <if test="lognum != 0">lognum=#{lognum}, </if>
+       <if test="reloadAclFlag != 0">reload_acl_flag=#{reloadAclFlag}, </if>
+       <if test="isActive != 0">is_active=#{isActive}, </if>
+       <if test="extra != null">extra=#{extra}, </if>
+       <if test="rpToken != null">rp_token=#{rpToken}, </if>
+       <if test="rpTokenCreatedAt != null">rp_token_created_at=#{rpTokenCreatedAt}, </if> 
+       <if test="failuresNum != 0">failures_num=#{failuresNum}, </if>
+       <if test="firstFailure != null">first_failure=#{firstFailure}, </if>
+       <if test="lockExpires != null">lock_expires=#{lockExpires}, </if>             
+     </set>
+     WHERE user_id=#{userId} 
+   </update>  
+    
+   <delete id="deleteAdminUser">
+     DELETE FROM admin_user
+     <where>
+       <if test="userId != 0">user_id=#{userId}</if>
+       <if test="firstname != null">AND firstname=#{firstname}</if>
+       <if test="username != null">AND username=#{username}</if>       
+     </where>
+   </delete>
+   
+   <sql id="AdminUserColumns">user_id, firstname, lastname, email, username, password, created, modified, logdate, lognum, reload_acl_flag, is_active, extra, rp_token, rp_token_created_at, failures_num, first_failure, lock_expires</sql>
+   <sql id="AdminUserProperties">#{userId}, #{firstname}, #{lastname}, #{email}, #{username}, #{password}, #{created}, #{modified}, #{logdate}, #{lognum}, #{reloadAclFlag}, #{isActive}, #{extra}, #{rpToken}, #{rpTokenCreatedAt}, #{failuresNum}, #{firstFailure}, #{lockExpires}</sql>
+
 
 </mapper>
