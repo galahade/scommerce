@@ -12,27 +12,31 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.salmon.scommerce">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.apache.ibatis">
+		<level value="debug" />
+	</logger>
+	
+	<logger name="org.mybatis.example">
 		<level value="debug" />
 	</logger>
 	
