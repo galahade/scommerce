@@ -8,6 +8,18 @@
      <result  property="roleName" column="role_name" />
      <collection property="api2AclRuleList" ofType="com.salmon.scommerce.persistence.domain.Api2AclRule" resultMap="com.salmon.scommerce.persistence.repository.Api2AclRuleMapper.Api2AclRuleResult"/>
     </resultMap>
+    
+    <select id="getAclRolesandPivs" parameterType="map" resultMap="Api2AclRoleResult">
+    	SELECT role.entity_id entity_id, role.role_name role_name, rule.resource_id resource_id FROM api2_acl_role role, api2_acl_rule rule WHERE role.entity_id = rule.role_id
+    	<if test="api2AclRole.entityId != 0"> AND entity_id = #{api2AclRole.entityId}</if>
+    	<if test="api2AclRole.roleName != null and api2AclRule.privilege != ''"> AND role_name = #{api2AclRole.roleName}</if>
+    	
+    	<if test="api2AclRule.entityId != 0"> AND entity_id = #{api2AclRule.entityId}	</if>
+		<if test="api2AclRule.roleId != 0"> AND role_id = #{api2AclRule.roleId}	</if>
+		<if test="api2AclRule.resourceId != null and api2AclRule.resourceId != ''"> AND resource_id = #{api2AclRule.resourceId}	</if>
+		<if test="api2AclRule.privilege != null and api2AclRule.privilege != ''"> AND privilege = #{api2AclRule.privilege}	</if>
+		order by resource_id
+    </select>
 
 
 

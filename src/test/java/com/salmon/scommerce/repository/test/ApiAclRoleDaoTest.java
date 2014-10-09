@@ -25,6 +25,7 @@ import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 @ContextConfiguration(classes={MybatisConfig.class})
 public class ApiAclRoleDaoTest extends TestCase {
 	private static Api2AclRole api2AclRole;
+	private static Api2AclRule api2AclRule;
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
@@ -33,6 +34,7 @@ public class ApiAclRoleDaoTest extends TestCase {
 	@BeforeClass
 	public static void setUpBeforeClass(){
 		api2AclRole = new Api2AclRole();
+		api2AclRule = new Api2AclRule();
 
 	}
 	
@@ -40,10 +42,25 @@ public class ApiAclRoleDaoTest extends TestCase {
 	@Test
 	public void testGetAclRoles(){
 		logger.debug("begin-testSelectAclRole");
-		List<Api2AclRole> aclRules= api2AclRoleMapper.getAclRoles();
-		assertNotNull(aclRules);
-		for(Api2AclRole api2AclRole : aclRules)
-		System.out.println(api2AclRole.getRoleName());
+		List<Api2AclRole> aclRoles= api2AclRoleMapper.getAclRoles(null);
+		assertNotNull(aclRoles);
+		for(Api2AclRole api2AclRole : aclRoles)
+			System.out.println(api2AclRole.getRoleName());
 		logger.debug("end-testSelectAclRole");
 	}
+
+	@Test
+	public void testGetAclRolesandPrivs() {
+		logger.debug("begin-testSelectAclRole");
+		List<Api2AclRole> aclRoles = api2AclRoleMapper.getAclRolesandPivs(
+				api2AclRole, api2AclRule);
+		assertNotNull(aclRoles);
+		System.out.println(aclRoles.size());
+		for (Api2AclRole api2AclRole : aclRoles)
+			for (Api2AclRule api2AclRule : api2AclRole.getApi2AclRule())
+				System.out.println(api2AclRole.getRoleName()
+						+ "----------------" + api2AclRule.getResourceId());
+		logger.debug("end-testSelectAclRole");
+	}
+	
 }
