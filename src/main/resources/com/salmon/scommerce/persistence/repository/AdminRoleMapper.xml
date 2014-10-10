@@ -13,24 +13,22 @@
     <result  column="gws_is_all" property="gwsIsAll" /> 
     <result  column="gws_websites" property="gwsWebSites" /> 
     <result  column="gws_store_groups" property="gwsStoreGroups" /> 
-    <!-- 
- <collection property="roles" ofType="Role">
- <id column="rid" property="id" />
- <result column="rolename" property="roleName" />
- </collection>
-  -->
   </resultMap>
-<!-- 
-  <select id="findUserAndRoleByPage"  parameterType="User"  resultMap="userResult">
-  select u.id as uid, u.username ,u.enabled,u.email,u.description,u.realname, r.rolename,r.id as rid from esb_users u,esb_roles r,esb_user_role ur where u.id=ur.user_id and r.id = ur.role_id 
   
-  <if test="users !=null and users.size()!=0">
-   and u.id in 
-   <foreach item="item" index="index" collection="users" open="(" separator="," close=")">
-   #{item.id}
-   </foreach>
-  </if>
-  
-  </select>
-   -->
+  <resultMap type="com.salmon.scommerce.persistence.domain.AdminRoleNew" id="AdminRoleResult">
+    <id  column="role_id" property="roleId" />
+   	<result  column="parent_id" property="parentId" />
+    <result  column="tree_level" property="treeLevel" />
+    <result  column="sort_order" property="sortOrder" />
+    <result  column="role_type" property="roleType" /> 
+    <result  column="role_name" property="roleName" /> 
+    <result  column="gws_is_all" property="gwsIsAll" /> 
+    <result  column="gws_websites" property="gwsWebSites" /> 
+    <result  column="gws_store_groups" property="gwsStoreGroups" /> 
+    <association property="parent" javaType="com.salmon.scommerce.persistence.domain.AdminRoleNew">
+    </association>
+    <collection property="" javaType="com.salmon.scommerce.persistence.domain.AdminUser">
+    </collection>
+  </resultMap>
+
 </mapper>

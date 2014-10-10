@@ -1,6 +1,7 @@
 package com.salmon.scommerce.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,6 +62,9 @@ public class UserRegisterController {
 		if(added != 1){
 			return "userregister";	
 		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("user", newUser);
 		
 		return "registersuccess";	
 		
