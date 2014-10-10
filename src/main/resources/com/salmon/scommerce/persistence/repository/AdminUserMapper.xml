@@ -58,7 +58,7 @@
    <select id="getAdminUsers" resultMap="AdminUserResult">
       SELECT * FROM admin_user
       <where>
-         <if test="userId != null">user_id=#{firstname}</if>
+         <if test="userId != 0">user_id=#{firstname}</if>
          <if test="firstname != null">AND firstname=#{firstname}</if>
          <if test="lastname != null">AND lastname=#{lastname}</if>
          <if test="email != null">AND email=#{email}</if>

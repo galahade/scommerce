@@ -3,6 +3,7 @@ package com.salmon.scommerce.repository.test;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -139,5 +140,22 @@ Logger logger = LoggerFactory.getLogger(this.getClass());
 		assertEquals(1, updated);
 				
 	}
+	
+	@Test
+	public void testGetAdminUsers(){
+		logger.debug("testGetAdminUsers starts");
+
+		AdminUser newUser = new AdminUser();
+		newUser.setFirstname("cheng");
+		newUser.setLastname("long");
+		//newUser.setEmail("12233@hotmail.com");
+		//newUser.setUsername("xiaolong3");
+		newUser.setPassword("123456");
+		
+		List<AdminUser> users = userMapper.getAdminUsers(newUser);	
+		assertEquals(2, users.size());
+				
+	}
+
 
 }

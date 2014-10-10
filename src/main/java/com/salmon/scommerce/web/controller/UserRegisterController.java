@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.salmon.scommerce.core.domain.NewUser;
 import com.salmon.scommerce.core.services.NewUserService;
-import com.salmon.scommerce.core.services.UserService;
 
 @Controller
 @RequestMapping("/userregister")

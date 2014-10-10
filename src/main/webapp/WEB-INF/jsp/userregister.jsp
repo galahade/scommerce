@@ -18,7 +18,7 @@
       username: <input type="text" name="username" /><br>
       password: <input type="text" name="password" /><br>
       <br><br>
-      <input type="submit" value="submit" />&nbsp;&nbsp;&nbsp;<input type="reset" />
+      <input type="submit" value="submit" />&nbsp;&nbsp;&nbsp;<input type="reset" value="reset" />
    
    </form>
 </center></body>
