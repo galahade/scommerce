@@ -21,9 +21,17 @@
 		<org.apache.shiro.version>1.2.3</org.apache.shiro.version>
 		<org.mybatis.version>3.2.7</org.mybatis.version>
 		<org.mybatis.mybatis-spring.version>1.2.2</org.mybatis.mybatis-spring.version>
+		<net.sf.ehcache.version>2.6.9</net.sf.ehcache.version>
 	</properties>
 
 	<dependencies>
+	<!-- Cache -->
+	  <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>${net.sf.ehcache.version}</version>
+        </dependency>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
