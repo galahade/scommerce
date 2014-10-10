@@ -45,5 +45,29 @@ public class NewUserServiceHandler implements NewUserService {
 		
 		return 1;
 	}
+
+	@Override
+	public int loginUser(NewUser newUser) {
+		
+		AdminUser newAdminUser = new AdminUser();
+		newAdminUser.setUsername(newUser.getUsername());
+		
+		List<AdminUser> oldAdminUsers = userService.findAdminUsers(newAdminUser);
+		
+		if(oldAdminUsers.size() < 1){
+			System.out.println("The User does not exist!");	
+			return 0;
+		}
+		
+		if(!newUser.getPassword().equals(oldAdminUsers.get(0).getPassword())){
+			
+			System.out.println("The User exists but the password entered does not match!");
+			return 0;
+			
+		}
+		
+		System.out.println("The User exists!");
+        return 1;
+	}
 	
 }

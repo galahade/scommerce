@@ -11,7 +11,7 @@
 </head>
 <body>
 <center>
-   <p>Congratulations!  have completed the register procedure!</p>
+   <p>Congratulations! ${user.username} have completed the register procedure!</p>
 </center>
 </body>
 </html>
