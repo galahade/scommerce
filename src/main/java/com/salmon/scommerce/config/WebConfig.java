@@ -17,6 +17,11 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.salmon.scommerce.core.services.UserService;
+import com.salmon.scommerce.core.services.handlers.MockedUserServiceHandler;
+import com.salmon.scommerce.core.services.handlers.UserServiceHandlerCL;
+import com.salmon.scommerce.security.shiro.PasswordHelper;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.salmon.scommerce.web.controller",
@@ -68,5 +73,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		// # -1 : never reload, 0 always reload
 		messageSource.setCacheSeconds(0);
 		return messageSource;
+	}
+	
+	@Bean
+	public UserService userService(){
+		
+		UserService userServicer = new UserServiceHandlerCL();
+		return userServicer;
+
 	}
 }

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.salmon.scommerce.persistence.domain.AdminUser;
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
@@ -88,6 +89,23 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId ended!");
 				
+	}
+
+
+	@Override
+	public int createAdminUser(AdminUser adminUser) {
+		
+		logger.debug("UserServiceTest.getUserAndRoleWithUserId starting");
+
+		int added = usermapper.addAdminUserInc(adminUser);
+		
+		if(added < 1){	
+			logger.debug("create AdminUser failed!");
+			throw new RuntimeException("create AdminUser failed!");
+		}
+		
+		return added;
+
 	}
 
 }
