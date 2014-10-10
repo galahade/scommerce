@@ -1,5 +1,7 @@
 package com.salmon.scommerce.persistence.services.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -91,8 +93,7 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 				
 	}
 
-
-	@Override
+	@Transactional
 	public int createAdminUser(AdminUser adminUser) {
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId starting");
@@ -106,6 +107,15 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 		
 		return added;
 
+	}
+
+
+	@Override
+	public List<AdminUser> findAdminUsers(AdminUser adminUser) {
+        
+		List<AdminUser> adminUsers = usermapper.getAdminUsers(adminUser);
+		
+		return adminUsers;
 	}
 
 }

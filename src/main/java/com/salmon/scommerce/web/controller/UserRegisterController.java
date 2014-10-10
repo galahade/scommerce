@@ -4,20 +4,25 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.salmon.scommerce.core.domain.NewUser;
+import com.salmon.scommerce.core.services.NewUserService;
 import com.salmon.scommerce.core.services.UserService;
-import com.salmon.scommerce.persistence.domain.AdminUser;
 
 @Controller
 @RequestMapping("/userregister")
 public class UserRegisterController {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(UserRegisterController.class);
-		
+	
+	@Autowired
+	NewUserService newUserServicer;
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public String getUserRegisterPage(){
 		LOGGER.debug("The userregister Page will display.");
@@ -28,7 +33,7 @@ public class UserRegisterController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST, value="/register")
-	public String registerUser(HttpServletRequest request, UserService userServicer){
+	public String registerUser(HttpServletRequest request){
 		
 		LOGGER.debug("registerUser starts registering user.");
 		
@@ -43,18 +48,17 @@ public class UserRegisterController {
 			return "userregister";	
 		}
 		
-		AdminUser adminUser = new AdminUser();
-		adminUser.setFirstname(firstname);
-		adminUser.setLastname(lastname);
-		adminUser.setEmail(email);
-		adminUser.setUsername(username);
-		adminUser.setPassword(password);
+		NewUser newUser = new NewUser();
+		newUser.setFirstname(firstname);
+		newUser.setLastname(lastname);
+		newUser.setEmail(email);
+		newUser.setUsername(username);
+		newUser.setPassword(password);
 
-		System.out.println(adminUser.getFirstname() + " & " + adminUser.getLastname());
+		System.out.println(newUser.getFirstname() + " & " + newUser.getLastname());
 		
-		int added = 0;
-		
-		
+		int added = newUserServicer.registerNewUser(newUser);
+
 		if(added != 1){
 			return "userregister";	
 		}

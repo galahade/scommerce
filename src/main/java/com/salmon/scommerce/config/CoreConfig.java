@@ -5,8 +5,10 @@ import javax.inject.Inject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.salmon.scommerce.core.services.NewUserService;
 import com.salmon.scommerce.core.services.UserService;
 import com.salmon.scommerce.core.services.handlers.MockedUserServiceHandler;
+import com.salmon.scommerce.core.services.handlers.NewUserServiceHandler;
 import com.salmon.scommerce.security.shiro.PasswordHelper;
 
 @Configuration
@@ -17,6 +19,13 @@ public class CoreConfig {
 	@Bean
 	public UserService userService() {
 		return new MockedUserServiceHandler(passwordHelper);
+	}
+	
+	@Bean
+	public NewUserService userServiceCL(){
+		
+		NewUserService newUserServicer = new NewUserServiceHandler();
+		return newUserServicer;
 	}
 
 }

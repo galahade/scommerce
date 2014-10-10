@@ -53,7 +53,31 @@
        <if test="lockExpires != null">lock_expires=#{lockExpires}, </if>             
      </set>
      WHERE user_id=#{userId} 
-   </update>  
+   </update> 
+   
+   <select id="getAdminUsers" resultMap="AdminUserResult">
+      SELECT * FROM admin_user
+      <where>
+         <if test="userId != null">user_id=#{firstname}</if>
+         <if test="firstname != null">AND firstname=#{firstname}</if>
+         <if test="lastname != null">AND lastname=#{lastname}</if>
+         <if test="email != null">AND email=#{email}</if>
+         <if test="username != null">AND username=#{username}</if>
+         <if test="password != null">AND password=#{password}</if>
+         <if test="created != null">AND created=#{created}</if>
+         <if test="modified != null">AND modified=#{modified}</if>
+         <if test="logdate != null">AND logdate=#{created}</if>
+         <if test="lognum != 0">AND lognum=#{lognum}</if>
+         <if test="reloadAclFlag != 0">AND reload_acl_flag=#{reloadAclFlag}</if>
+         <if test="isActive != 0">AND is_active=#{isActive}</if>
+         <if test="extra != null">AND extra=#{extra}</if>
+         <if test="rpToken != null">AND rp_token=#{rpToken}</if>
+         <if test="rpTokenCreatedAt != null">AND rp_token_created_at=#{rpTokenCreatedAt}</if> 
+         <if test="failuresNum != 0">AND failures_num=#{failuresNum}</if>
+         <if test="firstFailure != null">AND first_failure=#{firstFailure}</if>
+         <if test="lockExpires != null">AND lock_expires=#{lockExpires}</if>  
+      </where>
+   </select> 
     
    <delete id="deleteAdminUser">
      DELETE FROM admin_user
