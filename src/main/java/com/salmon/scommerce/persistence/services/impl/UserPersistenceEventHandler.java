@@ -110,7 +110,6 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 	}
 
 
-	@Override
 	public List<AdminUser> findAdminUsers(AdminUser adminUser) {
         
 		List<AdminUser> adminUsers = usermapper.getAdminUsers(adminUser);

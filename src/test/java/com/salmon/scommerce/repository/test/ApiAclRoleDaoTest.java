@@ -1,7 +1,5 @@
 package com.salmon.scommerce.repository.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -19,7 +17,6 @@ import com.salmon.scommerce.config.MybatisConfig;
 import com.salmon.scommerce.persistence.domain.Api2AclRole;
 import com.salmon.scommerce.persistence.domain.Api2AclRule;
 import com.salmon.scommerce.persistence.repository.Api2AclRoleMapper;
-import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={MybatisConfig.class})

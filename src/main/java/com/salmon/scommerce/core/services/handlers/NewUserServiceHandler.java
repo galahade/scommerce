@@ -18,7 +18,6 @@ public class NewUserServiceHandler implements NewUserService {
 	
 	public NewUserServiceHandler(){}
 
-	@Override
 	public int registerNewUser(NewUser newUser) {
 		
 		AdminUser newAdminUser = new AdminUser();
@@ -46,7 +45,6 @@ public class NewUserServiceHandler implements NewUserService {
 		return 1;
 	}
 
-	@Override
 	public int loginUser(NewUser newUser) {
 		
 		AdminUser newAdminUser = new AdminUser();
