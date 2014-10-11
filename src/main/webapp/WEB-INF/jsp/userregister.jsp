@@ -11,7 +11,7 @@
    <h3>Welcome to Magento!</h3>
    <p>Please complete the following form to register:</p>
    
-   <form action="userregister/register" method="post" >
+   <form action="/scommerce/userregister/register" method="post" >
       firstname: <input type="text" name="firstname" /><br>
       lastname: <input type="text" name="lastname" /><br>
       email: <input type="text" name="email" /><br>

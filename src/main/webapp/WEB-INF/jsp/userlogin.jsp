@@ -11,7 +11,7 @@
    <h3>Welcome to Magento!</h3>
    <p>Please Login before doing any operations:</p>
    
-   <form action="login/authenticator" method="post" >
+   <form action="/scommerce/login/authenticator" method="post" >
       username: <input type="text" name="username" /><br>
       password: <input type="text" name="password" /><br>
       <br><br>
