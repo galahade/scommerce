@@ -156,6 +156,15 @@ Logger logger = LoggerFactory.getLogger(this.getClass());
 		assertEquals(2, users.size());
 				
 	}
+	
+	@Test
+	public void testSelectAdminUserById(){
+		logger.debug("testSelectAdminUserById starts");
+
+		AdminUser user = userMapper.selectAdminUserById(7);
+		assertEquals("12233@hotmail.com", user.getEmail());
+				
+	}
 
 
 }

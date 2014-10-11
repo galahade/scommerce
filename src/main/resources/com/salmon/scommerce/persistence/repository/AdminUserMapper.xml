@@ -53,7 +53,11 @@
        <if test="lockExpires != null">lock_expires=#{lockExpires}, </if>             
      </set>
      WHERE user_id=#{userId} 
-   </update> 
+   </update>
+   
+   <select id="selectAdminUserById" resultMap="AdminUserResult">
+    SELECT * FROM admin_user WHERE user_id = #{userId}
+   </select> 
    
    <select id="getAdminUsers" resultMap="AdminUserResult">
       SELECT * FROM admin_user

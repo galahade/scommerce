@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.salmon.scommerce.config.MybatisConfig;
 import com.salmon.scommerce.persistence.domain.AdminRole;
+import com.salmon.scommerce.persistence.domain.AdminRoleNew;
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,4 +44,15 @@ Logger logger = LoggerFactory.getLogger(this.getClass());
 		assertEquals(1, affected);
 	}
 	
+	@Test
+	public void testSelectAdminRoleNewById(){
+		AdminRoleNew role = roleMapper.selectAdminRoleNewById(27);
+		System.out.println(role.getRoleName());
+		System.out.println(role.getParent().getParent());
+		System.out.println(role.getParent().getRoleId());
+		System.out.println(role.getUsers().size());
+		System.out.println(role.getUsers().get(0).getUsername());
+		assertEquals(2, role.getTreeLevel());
+		assertEquals(1, role.getParent().getRoleId());
+	}
 }

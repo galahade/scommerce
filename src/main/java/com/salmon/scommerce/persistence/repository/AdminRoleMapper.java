@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.salmon.scommerce.persistence.domain.AdminRole;
+import com.salmon.scommerce.persistence.domain.AdminRoleNew;
 
 
 public interface AdminRoleMapper {
@@ -18,6 +19,8 @@ public interface AdminRoleMapper {
 	@Select("SELECT * FROM admin_role where user_id = #{userId}")
 	@ResultMap(value="AdminRoleResult")
 	AdminRole getAdminRoleByUserId(int userId);
+	
+	AdminRoleNew selectAdminRoleNewById(int roleId);
 	
 	@Update("UPDATE admin_role SET user_id = #{newId} WHERE user_id = #{oldId}")
 	int updateAdminRoleWithUserId(@Param("oldId") int oldId, @Param("newId") int newId);

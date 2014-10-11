@@ -27,5 +27,7 @@ public interface AdminUserMapper {
 	public int updateAdminUser(AdminUser adminuser);
 	
 	public List<AdminUser> getAdminUsers(AdminUser adminuser);
+	
+	public AdminUser selectAdminUserById(int userId);
 		
 }

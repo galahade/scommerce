@@ -15,20 +15,26 @@
     <result  column="gws_store_groups" property="gwsStoreGroups" /> 
   </resultMap>
   
-  <resultMap type="com.salmon.scommerce.persistence.domain.AdminRoleNew" id="AdminRoleResult">
+  <resultMap type="com.salmon.scommerce.persistence.domain.AdminRoleNew" id="AdminRoleNewResult">
+  
     <id  column="role_id" property="roleId" />
-   	<result  column="parent_id" property="parentId" />
+    
     <result  column="tree_level" property="treeLevel" />
     <result  column="sort_order" property="sortOrder" />
     <result  column="role_type" property="roleType" /> 
     <result  column="role_name" property="roleName" /> 
     <result  column="gws_is_all" property="gwsIsAll" /> 
     <result  column="gws_websites" property="gwsWebSites" /> 
-    <result  column="gws_store_groups" property="gwsStoreGroups" /> 
-    <association property="parent" javaType="com.salmon.scommerce.persistence.domain.AdminRoleNew">
-    </association>
-    <collection property="" javaType="com.salmon.scommerce.persistence.domain.AdminUser">
+    <result  column="gws_store_groups" property="gwsStoreGroups" />
+    
+    <association column="parent_id" property="parent" javaType="com.salmon.scommerce.persistence.domain.AdminRoleNew" select="selectAdminRoleNewById"/>
+       
+    <collection column="user_id" property="users" ofType="com.salmon.scommerce.persistence.domain.AdminUser" select="com.salmon.scommerce.persistence.repository.AdminUserMapper.selectAdminUserById">
     </collection>
   </resultMap>
+  
+  <select id="selectAdminRoleNewById" resultMap="AdminRoleNewResult">
+    SELECT * FROM admin_role WHERE role_id = #{role_id}
+  </select>
 
 </mapper>
