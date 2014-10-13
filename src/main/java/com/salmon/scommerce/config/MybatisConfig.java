@@ -3,7 +3,6 @@ package com.salmon.scommerce.config;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
-import org.springframework.core.io.Resource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.core.io.ClassPathResource;
 
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
@@ -20,7 +18,7 @@ import com.salmon.scommerce.persistence.repository.Api2AclRoleMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclUserMapper;
 import com.salmon.scommerce.persistence.repository.dao.Api2AclUserDao;
-import com.salmon.scommerce.persistence.services.*;
+import com.salmon.scommerce.persistence.services.UserPersistenceService;
 import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
 @Configuration

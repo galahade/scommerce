@@ -9,7 +9,7 @@
 
 	<properties>
 		<java-version>1.7</java-version>
-		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
+		<org.springframework-version>4.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<junit.version>4.11</junit.version>
@@ -214,6 +214,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.32</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
 		</dependency>
 		<!-- HBase <dependency> <groupId>org.apache.hbase</groupId> <artifactId>hbase</artifactId> 
 			<version>0.95.0</version> </dependency> <dependency> <groupId>org.apache.nutch</groupId> 

@@ -19,7 +19,7 @@ public class BaseDao<T> extends SqlSessionDaoSupport {
 	 * @param id the primary id
 	 * @return the returned object type
 	 */
-	public T selectOne(Class clazz, int id){
+	public  T selectOne(Class<T> clazz, int id){
 		
 		return this.selectOne(getMethodPath(clazz) + ".getByEntityId", id);
 	}
@@ -47,13 +47,13 @@ public class BaseDao<T> extends SqlSessionDaoSupport {
 		return this.getSqlSession().delete(getMethodPath(obj.getClass()) + ".delete", obj);
 	}
 	
-	public int delete(Class clazz, int id){
+	public int delete(Class<T> clazz, int id){
 		return this.getSqlSession().delete(getMethodPath(clazz) + ".delete", id);
 	}
 	
 	
 	
-	private String getMethodPath(Class clazz){
+	private String getMethodPath(Class<?> clazz){
 		
 		return packagePath + clazz.getSimpleName() + "Mapper";
 	}
