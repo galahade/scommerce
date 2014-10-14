@@ -3,6 +3,7 @@ package com.salmon.scommerce.config;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.springframework.core.io.Resource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.io.ClassPathResource;
 
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
@@ -18,7 +20,7 @@ import com.salmon.scommerce.persistence.repository.Api2AclRoleMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclUserMapper;
 import com.salmon.scommerce.persistence.repository.dao.Api2AclUserDao;
-import com.salmon.scommerce.persistence.services.UserPersistenceService;
+import com.salmon.scommerce.persistence.services.*;
 import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
 @Configuration
@@ -54,7 +56,7 @@ public class MybatisConfig {
 		SqlSessionTemplate sqlSessionTemplate = null;
 		try {
 			 sqlSessionTemplate = new SqlSessionTemplate(getSqlSessionFactory());
-			 sqlSessionTemplate.getConfiguration().addMappers("com.salmon.scommerce.persistence.repository");
+			 //sqlSessionTemplate.getConfiguration().addMappers("com.salmon.scommerce.persistence.repository");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,6 +85,8 @@ public class MybatisConfig {
 		}
 	}
 	
+
+	
 	@Bean 
 	public MapperFactoryBean<AdminUserMapper> adminUserMapper() throws Exception{
 		MapperFactoryBean<AdminUserMapper> bean = new MapperFactoryBean<AdminUserMapper>();
@@ -100,22 +104,9 @@ public class MybatisConfig {
 		}
 	}
 	
-	@Bean 
-	public MapperFactoryBean<Api2AclRuleMapper> api2AclRuleMapper() throws Exception{
-		MapperFactoryBean<Api2AclRuleMapper> bean = new MapperFactoryBean<Api2AclRuleMapper>();
-		bean.setMapperInterface(Api2AclRuleMapper.class);
-		bean.setSqlSessionFactory(getSqlSessionFactory());
-		return bean;
-	}
+
 	
-	public Api2AclRuleMapper getApi2AclRuleMapper() throws Exception{
-		try {
-			return api2AclRuleMapper().getObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-	}
+
 	
 	@Bean 
 	public MapperFactoryBean<Api2AclRoleMapper> api2AclRoleMapper() throws Exception{
@@ -132,6 +123,14 @@ public class MybatisConfig {
 			e.printStackTrace();
 			throw e;
 		}
+	}
+	
+	@Bean 
+	public MapperFactoryBean<Api2AclRuleMapper> api2AclRuleMapper() throws Exception{
+		MapperFactoryBean<Api2AclRuleMapper> bean = new MapperFactoryBean<Api2AclRuleMapper>();
+		bean.setMapperInterface(Api2AclRuleMapper.class);
+		bean.setSqlSessionFactory(getSqlSessionFactory());
+		return bean;
 	}
 	
 	@Bean 
