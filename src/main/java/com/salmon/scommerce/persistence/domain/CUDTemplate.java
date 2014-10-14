@@ -2,6 +2,18 @@ package com.salmon.scommerce.persistence.domain;
 import  static org.apache.ibatis.jdbc.SqlBuilder.*;
 
 public class CUDTemplate<T extends BaseDomain> {
+	
+	public String getById(T obj){
+		String idname = obj.id();
+		String idColumnName = obj.idColumnName();
+		BEGIN();
+		SELECT("*");
+		FROM(obj.tableName());
+		WHERE(idColumnName + "=#{" + idname + "}");
+		
+		return SQL();
+	}
+	
 	public String insert(T obj){
 		BEGIN();
 		INSERT_INTO(obj.tableName());

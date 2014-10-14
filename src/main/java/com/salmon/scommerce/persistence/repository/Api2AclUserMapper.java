@@ -1,10 +1,7 @@
 package com.salmon.scommerce.persistence.repository;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.salmon.scommerce.persistence.domain.Api2AclUser;
 
@@ -16,17 +13,16 @@ import com.salmon.scommerce.persistence.domain.Api2AclUser;
  * @author ctian
  *
  */
-public interface Api2AclUserMapper {
+public interface Api2AclUserMapper extends BaseMapper<Api2AclUser>  {
 	
 	@Select("SELECT * FROM api2_acl_user where admin_id = #{adminId}")
-	@ResultMap("Api2AclUserResult")
+	//@ResultMap("Api2AclUserResult")
+	@ResultMap(value = { "Api2AclUserResult" })
 	public Api2AclUser getByEntityId(int adminId);
+	
+	@ResultMap(value = { "Api2AclUserResult" })
+	//@Select("SELECT * FROM api2_acl_user where admin_id = #{adminId}")
+	public Api2AclUser getById(Api2AclUser api2AclUser);
 
-	public int add(Api2AclUser api2AclUser);
 	
-	@Update("UPDATE api2_acl_user SET admin_id =#{adminId}, role_id=#{roleId} WHERE admin_id=#{adminId}")
-	public int update(Api2AclUser api2AclUser);
-	
-	@Delete("DELETE FROM api2_acl_user where admin_id = #{adminId}")
-	public int delete(int adminId);
 }

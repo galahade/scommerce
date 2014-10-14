@@ -41,7 +41,10 @@ public class ApiAclUserMapperTest {
 		public void testGetAclUser() {
 			logger.debug("begin");
 			int selectUserId = 7;
-			Api2AclUser aclUser = api2AclUserMapper.getByEntityId(selectUserId);
+			api2AclUser.setAdminId(selectUserId);
+			Api2AclUser aclUser = api2AclUserMapper.getById(api2AclUser);
+			if(aclUser == null)
+				logger.info("the object is null");
 			logger.info("Result:" + aclUser.toString());
 			logger.debug("end");
 		}
