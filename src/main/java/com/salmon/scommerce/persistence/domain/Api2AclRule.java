@@ -1,15 +1,25 @@
 package com.salmon.scommerce.persistence.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * 
  * @author ctian
  * @Date 2014-10-08
  */
-public class Api2AclRule {
+@Table(name="api2_acl_rule")
+public class Api2AclRule extends BaseDomain {
 
+	@Id()
+	@Column(name="entity_id")
 	private int entityId;
+	@Column(name="role_id")
 	private int roleId;
+	@Column(name="resource_id")
 	private String resourceId;
+	@Column(name="privilege")
 	private String privilege;
 	
 	public int getEntityId() {
@@ -36,6 +46,15 @@ public class Api2AclRule {
 	public void setPrivilege(String privilege) {
 		this.privilege = privilege;
 	}
+	
+	@Override
+	public String toString() {
+		return "Api2AclRule [entityId=" + entityId + ", roleId=" + roleId
+				+ ", resourceId=" + resourceId + ", privilege=" + privilege
+				+ "]";
+	}
+	
+	
 
 	
 }

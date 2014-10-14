@@ -6,10 +6,7 @@
      <id  property="adminId" column="admin_id" />
      <result  property="roleId" column="role_id" />
    </resultMap>
-   
-   <insert id="add" parameterType="com.salmon.scommerce.persistence.domain.Api2AclUser">
-   		INSERT INTO api2_acl_user(admin_id, role_id) values (#{adminId},#{roleId})
-   </insert>
+  
     
 
 </mapper>

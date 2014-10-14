@@ -16,7 +16,7 @@ import com.salmon.scommerce.persistence.domain.Api2AclRule;
  * @Date 2014-10-08
  *
  */
-public interface Api2AclRuleMapper {
+public interface Api2AclRuleMapper extends BaseMapper<Api2AclRule> {
 	
 	@Select("SELECT * FROM api2_acl_rule where entity_id = #{entityId}")
 	@ResultMap("Api2AclRuleResult")
@@ -24,15 +24,15 @@ public interface Api2AclRuleMapper {
 	
 	public List<Api2AclRule> getAclRules(Api2AclRule api2AclRule);
 	
-	@Insert("INSERT INTO api2_acl_rule(role_id, resource_id, privilege ) VALUES(#{roleId}, #{resourceId}, #{privilege})")
+	/*@Insert("INSERT INTO api2_acl_rule(role_id, resource_id, privilege ) VALUES(#{roleId}, #{resourceId}, #{privilege})")
 	public int addAclRule(Api2AclRule api2AclRule);
 	
 	@Update("UPDATE api2_acl_rule SET role_id = #{roleId},resource_id = #{resourceId},privilege = #{privilege} "
 			+ "where entity_id = #{entityId} ")
-	public void updateRuleByEntityId(Api2AclRule api2AclRule);
+	public int updateRuleByEntityId(Api2AclRule api2AclRule);
 	
 	@Delete("DELETE FROM api2_acl_rule WHERE entity_id = #{entityId}")
-	public void deleteByEntityId(int entityId);
+	public void deleteByEntityId(int entityId);*/
 
 	
 
