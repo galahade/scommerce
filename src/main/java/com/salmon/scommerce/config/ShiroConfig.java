@@ -65,7 +65,7 @@ public class ShiroConfig {
 		
 		Map<String, String> filterConfigMap = new HashMap<String, String>();
 		filterConfigMap.put("/login", "authc");
-		filterConfigMap.put("/**", "authc");
+		filterConfigMap.put("/user/**", "authc");
 		
 		bean.setFilters(filterMap);
 		bean.setFilterChainDefinitionMap(filterConfigMap);;
