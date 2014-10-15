@@ -14,7 +14,7 @@ import com.salmon.scommerce.persistence.domain.Api2AclUser;
 import com.salmon.scommerce.persistence.domain.AdminUser;
 import com.salmon.scommerce.persistence.repository.AdminRoleMapper;
 import com.salmon.scommerce.persistence.repository.AdminUserMapper;
-import com.salmon.scommerce.persistence.repository.dao.IApiAclUserDao;
+import com.salmon.scommerce.persistence.repository.Api2AclUserMapper;
 import com.salmon.scommerce.persistence.services.UserPersistenceService;
 
 @Component
@@ -27,7 +27,7 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 	private AdminRoleMapper roleMapper;
 	
 	@Autowired
-	private IApiAclUserDao aclUserDao;
+	private Api2AclUserMapper api2AclUserMapper;
 	
 	
 	
@@ -92,7 +92,7 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId starting");
 		
-		Api2AclUser api2AclUser = aclUserDao.selectOne(Api2AclUser.class, requestUserEvent.getUserId());
+		Api2AclUser api2AclUser = api2AclUserMapper.getByEntityId(requestUserEvent.getUserId());
 		
 		logger.debug("UserServiceTest.getUserAndRoleWithUserId ended!");
 		
@@ -127,7 +127,7 @@ public class UserPersistenceEventHandler implements UserPersistenceService {
 	public int addUserAndRole(UserDetailEvent userDetailEvent) {
 		logger.debug("UserServiceTest.addUserAndRole starting");
 		
-		int numOfInsert = aclUserDao.add(userDetailEvent.toAclUserPersistent(userDetailEvent));
+		int numOfInsert = api2AclUserMapper.insert(userDetailEvent.toAclUserPersistent(userDetailEvent));
 		
 		if(numOfInsert < 1){
 			logger.debug("create AdminUser failed!");

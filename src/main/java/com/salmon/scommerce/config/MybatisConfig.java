@@ -19,7 +19,6 @@ import com.salmon.scommerce.persistence.repository.AdminUserMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclRoleMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclRuleMapper;
 import com.salmon.scommerce.persistence.repository.Api2AclUserMapper;
-import com.salmon.scommerce.persistence.repository.dao.Api2AclUserDao;
 import com.salmon.scommerce.persistence.services.*;
 import com.salmon.scommerce.persistence.services.impl.UserPersistenceEventHandler;
 
@@ -150,15 +149,6 @@ public class MybatisConfig {
 		}
 	}
 	
-	/***********************************************************
-	 * Dao Inject
-	 ***********************************************************/
-	@Bean 
-	public Api2AclUserDao api2AclUserDao() throws Exception{
-		Api2AclUserDao api2AclUserDao = new Api2AclUserDao();
-		api2AclUserDao.setSqlSessionTemplate(getSqlSessionTemplate());
-		return api2AclUserDao;
-	}
 	
 	
 	/***********************************************************

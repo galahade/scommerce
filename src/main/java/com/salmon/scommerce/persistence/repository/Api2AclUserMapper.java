@@ -16,13 +16,9 @@ import com.salmon.scommerce.persistence.domain.Api2AclUser;
 public interface Api2AclUserMapper extends BaseMapper<Api2AclUser>  {
 	
 	@Select("SELECT * FROM api2_acl_user where admin_id = #{adminId}")
-	//@ResultMap("Api2AclUserResult")
 	@ResultMap(value = { "Api2AclUserResult" })
 	public Api2AclUser getByEntityId(int adminId);
 	
-	@ResultMap(value = { "Api2AclUserResult" })
-	//@Select("SELECT * FROM api2_acl_user where admin_id = #{adminId}")
-	public Api2AclUser getById(Api2AclUser api2AclUser);
 
 	
 }

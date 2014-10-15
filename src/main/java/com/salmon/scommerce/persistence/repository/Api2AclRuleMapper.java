@@ -24,15 +24,6 @@ public interface Api2AclRuleMapper extends BaseMapper<Api2AclRule> {
 	
 	public List<Api2AclRule> getAclRules(Api2AclRule api2AclRule);
 	
-	/*@Insert("INSERT INTO api2_acl_rule(role_id, resource_id, privilege ) VALUES(#{roleId}, #{resourceId}, #{privilege})")
-	public int addAclRule(Api2AclRule api2AclRule);
-	
-	@Update("UPDATE api2_acl_rule SET role_id = #{roleId},resource_id = #{resourceId},privilege = #{privilege} "
-			+ "where entity_id = #{entityId} ")
-	public int updateRuleByEntityId(Api2AclRule api2AclRule);
-	
-	@Delete("DELETE FROM api2_acl_rule WHERE entity_id = #{entityId}")
-	public void deleteByEntityId(int entityId);*/
 
 	
 

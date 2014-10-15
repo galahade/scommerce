@@ -2,6 +2,7 @@ package com.salmon.scommerce.persistence.repository;
 
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 
@@ -12,6 +13,7 @@ public interface BaseMapper<T extends BaseDomain> {
 	
 	
 	@SelectProvider(type=CUDTemplate.class,method="getById")
+	@ResultMap("result")
 	//public List<T> select(T obj);
 	public T getById(T obj);
 	

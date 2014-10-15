@@ -11,6 +11,15 @@
     
     </resultMap>
     
+    <resultMap type="com.salmon.scommerce.persistence.domain.Api2AclRule" id="result">
+    
+     <id  property="entityId" column="entity_id" />
+   	 <result  property="roleId" column="role_id" />
+     <result  property="resourceId" column="resource_id" />
+     <result  property="privilege" column="privilege" />
+    
+    </resultMap>
+    
     
     <select id="getAclRules" parameterType="com.salmon.scommerce.persistence.domain.Api2AclRule" 
     	resultMap="Api2AclRuleResult">
