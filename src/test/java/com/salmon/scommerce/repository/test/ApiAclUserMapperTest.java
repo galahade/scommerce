@@ -1,7 +1,6 @@
 package com.salmon.scommerce.repository.test;
 
 import static org.junit.Assert.assertNotSame;
-import junit.framework.TestCase;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,8 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.salmon.scommerce.config.MybatisConfig;
 import com.salmon.scommerce.persistence.domain.Api2AclUser;
 import com.salmon.scommerce.persistence.repository.Api2AclUserMapper;
-import com.salmon.scommerce.persistence.repository.dao.Api2AclUserDao;
-import com.salmon.scommerce.persistence.repository.dao.BaseDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={MybatisConfig.class})
