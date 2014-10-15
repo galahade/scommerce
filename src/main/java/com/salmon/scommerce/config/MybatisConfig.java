@@ -103,9 +103,6 @@ public class MybatisConfig {
 		}
 	}
 	
-
-	
-
 	
 	@Bean 
 	public MapperFactoryBean<Api2AclRoleMapper> api2AclRoleMapper() throws Exception{
@@ -115,14 +112,6 @@ public class MybatisConfig {
 		return bean;
 	}
 	
-	public Api2AclRoleMapper getApi2AclRoleMapper() throws Exception{
-		try {
-			return api2AclRoleMapper().getObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-	}
 	
 	@Bean 
 	public MapperFactoryBean<Api2AclRuleMapper> api2AclRuleMapper() throws Exception{

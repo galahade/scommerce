@@ -16,7 +16,8 @@ import com.salmon.scommerce.persistence.domain.Api2AclRule;
  * @Date 2014-10-08
  *
  */
-public interface Api2AclRoleMapper {
+public interface Api2AclRoleMapper extends BaseMapper<Api2AclRole> {
+	
 	
 	
 
@@ -24,11 +25,14 @@ public interface Api2AclRoleMapper {
 	@ResultMap("Api2AclRoleResult")
 	public List<Api2AclRole> getAclRoles(Api2AclRole api2AclRole);
 	
+	@Select("SELECT role.entity_id role_entity_id, role_name, rule.entity_id,role_id,resource_id,privilege "
+			+ "FROM api2_acl_role role, api2_acl_rule rule "
+			+ "WHERE role.entity_id = rule.role_id AND role.entity_id = #{roleId}")
+	@ResultMap("Api2AclRoleAndRuleResult")
+	public Api2AclRole getAclRoleandPrivsByRoleId(int roleId);
 	
 	public List<Api2AclRole> getAclRolesandPivs(@Param("api2AclRole")Api2AclRole api2AclRole,@Param("api2AclRule")Api2AclRule api2AclRule);
 	
 	
-//	@Insert("INSERT INTO api2_acl_rule(role_id, resource_id, privilege ) VALUES(#{roleId}, #{resourceId}, #{privilege})")
-//	public int addAclRule(Api2AclRule api2AclRule);
 
 }
